@@ -1,0 +1,23 @@
+{
+  "name": "node-folder-lister",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lasni/node-folder-lister.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lasni/node-folder-lister/issues"
+  },
+  "homepage": "https://github.com/Lasni/node-folder-lister#readme",
+  "bin": {
+    "nls": "index.js"
+  }
+}
