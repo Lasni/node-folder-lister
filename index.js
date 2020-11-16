@@ -1,11 +1,30 @@
 #!/usr/bin/env node
 
 const fs = require("fs");
+const { lstat } = fs.promises;
+const chalk = require("chalk");
+const path = require("path");
 
-fs.readdir(process.cwd(), (err, files) => {
+const targetDir = process.argv[2] || process.cwd();
+
+fs.readdir(targetDir, async (err, items) => {
   if (err) {
     throw new Error(err);
   } else {
-    console.log(files);
+    const statPromises = items.map((item) => {
+      return lstat(path.join(targetDir, item));
+    });
+
+    const allStats = await Promise.all(statPromises);
+
+    allStats.forEach((stat, i) => {
+      console.log(
+        `${
+          stat.isFile()
+            ? chalk.blue(items[i], "(File)")
+            : chalk.red.bold(items[i], "(Folder)")
+        }`
+      );
+    });
   }
 });
